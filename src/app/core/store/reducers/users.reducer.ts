@@ -13,6 +13,6 @@ export const userReducer = createReducer(initialUsersState,
   on(UserListAction.getUsersSuccess, (state, { users }) => ({ ...state, users, isLoading: false })),
   on(UserListAction.deleteUserSuccess, (state, { id }) => ({ ...state, users: state.users.filter(user => user.id != id) })),
   on(UserAction.getUserByIdSuccess, (state, { user }) => ({ ...state, selectedUser: user })),
-  on(UserAction.updateUserSuccess, (state, { user }) => ({ ...state, users: state.users.map(_user => _user.id == user.id ? user : _user) })),
+  on(UserAction.updateUserSuccess, (state, { user }) => ({ ...state, users: state.users.map(_user => _user.id == user.id ? user : _user), selectedUser: null })),
   on(UserAction.addUserSuccess, (state, { user }) => ({ ...state, users: { user, ...state.users } }))
 );
