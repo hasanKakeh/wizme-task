@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IAppState, IUser } from '@core/models/user';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { UserAction, usersIsLoadingSelector, usersSelector } from '@core/store';
+import { UserListAction, usersIsLoadingSelector, usersSelector } from '@core/store';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -43,11 +43,11 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getAllUser() {
-    this.store.dispatch(UserAction.getAllUsers())
+    this.store.dispatch(UserListAction.getAllUsers())
   }
 
   deleteUser(id: number) {
-    this.store.dispatch(UserAction.deleteUser({ id }))
+    this.store.dispatch(UserListAction.deleteUser({ id }))
   }
 
   ngOnDestroy(): void {

@@ -1,7 +1,7 @@
+import { UserAction, UserListAction } from '../actions/index'
 import { createReducer, on } from "@ngrx/store";
 
 import { IUsersState } from "@core/models/user";
-import { UserAction } from '../actions/index'
 
 const initialUsersState: IUsersState = {
   isLoading: false,
@@ -9,9 +9,10 @@ const initialUsersState: IUsersState = {
   selectedUser: null
 }
 export const userReducer = createReducer(initialUsersState,
-  on(UserAction.getAllUsers, (state) => ({ ...state, isLoading: true })),
-  on(UserAction.getUsersSuccess, (state, { users }) => ({ ...state, users, isLoading: false })),
-  on(UserAction.deleteUserSuccess, (state, { id }) => ({ ...state, users: state.users.filter(user => user.id != id) })),
+  on(UserListAction.getAllUsers, (state) => ({ ...state, isLoading: true })),
+  on(UserListAction.getUsersSuccess, (state, { users }) => ({ ...state, users, isLoading: false })),
+  on(UserListAction.deleteUserSuccess, (state, { id }) => ({ ...state, users: state.users.filter(user => user.id != id) })),
   on(UserAction.getUserByIdSuccess, (state, { user }) => ({ ...state, selectedUser: user })),
-  on(UserAction.updateUserSuccess, (state, { user }) => ({ ...state, users: state.users.map(_user => _user.id == user.id ? user : _user) }))
+  on(UserAction.updateUserSuccess, (state, { user }) => ({ ...state, users: state.users.map(_user => _user.id == user.id ? user : _user) })),
+  on(UserAction.addUserSuccess, (state, { user }) => ({ ...state, users: { user, ...state.users } }))
 );

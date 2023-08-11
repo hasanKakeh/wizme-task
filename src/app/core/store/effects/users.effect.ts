@@ -1,9 +1,9 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { UserAction, UserListAction } from "../actions";
 import { map, mergeMap, tap } from "rxjs";
 
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { UserAction } from "../actions";
 import { UserService } from './../../service';
 
 @Injectable()
@@ -12,10 +12,10 @@ export class UsersEffects {
 
   getUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserAction.getAllUsers),
+      ofType(UserListAction.getAllUsers),
       mergeMap(() =>
         this.userService.getAllUser()
-          .pipe(map((users) => UserAction.getUsersSuccess({ users })))
+          .pipe(map((users) => UserListAction.getUsersSuccess({ users })))
       )
     )
   )
@@ -43,10 +43,10 @@ export class UsersEffects {
   )
   deleteUser$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserAction.deleteUser),
+      ofType(UserListAction.deleteUser),
       mergeMap((props) =>
         this.userService.deleteUser(props.id)
-          .pipe(map((id) => UserAction.deleteUserSuccess({ id }))))));
+          .pipe(map((id) => UserListAction.deleteUserSuccess({ id }))))));
 
   getUserByID$ = createEffect(() =>
     this.actions$.pipe(ofType(UserAction.getUserById),
