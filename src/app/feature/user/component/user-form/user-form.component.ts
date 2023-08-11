@@ -54,7 +54,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
         this.getUserById(id);
       }),
       switchMap(() => {
-        return this.store.pipe(takeUntil(this.destroy$), select(selectedUserSelector))
+        return this.store.select(selectedUserSelector)
       }),
       takeUntil(this.destroy$))
       .subscribe(user => {

@@ -1,11 +1,11 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IAppState, IUser } from '@core/models/user';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { Store, select } from '@ngrx/store';
 import { UserAction, usersIsLoadingSelector, usersSelector } from '@core/store';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
 import { TitleService } from '@core/service';
 
 @Component({
@@ -21,11 +21,12 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   isLoading$!: Observable<boolean>;
   destroy$ = new Subject<void>();
 
-  constructor(private store: Store<IAppState>, private titleService: TitleService) { }
+  constructor(private store: Store<IAppState>, private titleService: TitleService) {
+  }
 
   ngOnInit(): void {
     this.titleService.setTitle('user list')
-    this.isLoading$ = this.store.pipe(select(usersIsLoadingSelector))
+    this.isLoading$ = this.store.select(usersIsLoadingSelector)
     this.subscribeUserStore()
   }
 
@@ -34,7 +35,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   subscribeUserStore() {
-    this.store.pipe(takeUntil(this.destroy$), select(usersSelector))
+    this.store.select(usersSelector).pipe(takeUntil(this.destroy$))
       .subscribe(users => {
         this.dataSource.data = users
         if (!users.length) this.getAllUser()
