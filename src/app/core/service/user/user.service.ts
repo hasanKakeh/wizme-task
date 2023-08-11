@@ -41,10 +41,11 @@ export class UserService {
   }
 
   updateUser(user: IUser) {
+    user = { ...user, id: Number(user.id) }
     this.users = this.users.map(_user => {
       if (_user.id != user.id)
         return _user;
-      return { ..._user, user }
+      return { ..._user, ...user }
     })
     return of(user)
   }

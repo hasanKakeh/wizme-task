@@ -28,6 +28,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.titleService.setTitle('user list')
     this.isLoading$ = this.store.select(usersIsLoadingSelector)
     this.subscribeUserStore()
+    this.getAllUser()
   }
 
   ngAfterViewInit() {
@@ -38,7 +39,6 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.store.select(usersSelector).pipe(takeUntil(this.destroy$))
       .subscribe(users => {
         this.dataSource.data = users
-        if (!users.length) this.getAllUser()
       })
   }
 
