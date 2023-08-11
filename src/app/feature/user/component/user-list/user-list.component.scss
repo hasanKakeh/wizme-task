@@ -1,10 +1,8 @@
-// Use Angular.json Config to support path
+// Use Angular.json Config to support alias paths
 @use 'abstracts' as *;
 
 
 .user-list {
-  padding: 2rem;
-
   &__btn {
     margin-bottom: 1rem;
   }
@@ -12,74 +10,67 @@
 
 .table-container {
   position: relative;
-}
 
-table {
-  width: 100%;
+  /*table responsive*/
+  table {
+    width: 100%;
 
-  .mat-header-row {
-    @include screen-size('md') {
-
-      display: none;
-    }
-
-    .mat-header-cell {
-      border: none;
-      text-transform: capitalize;
-
-    }
-  }
-
-  .mat-row {
-    @include screen-size('md') {
-      height: auto !important;
-
-      margin-bottom: 1rem;
-      overflow: hidden;
-      display: block;
-
-      &:nth-of-type(2n) {
-        background-color: lightgray;
-      }
-
-      &:nth-of-type(2n+1) {
-        background-color: white;
-      }
-
-    }
-
-    .mat-cell {
-      border: none;
-
+    .mat-header-row {
       @include screen-size('md') {
+        display: none;
+      }
 
-        &:before {
-          content: attr(data-label);
-          float: left;
-          text-transform: capitalize;
+      .mat-header-cell {
+        border: none;
+        text-transform: capitalize;
+      }
+    }
 
-          font-size: .85em;
+    .mat-row {
+      @include screen-size('md') {
+        height: auto !important;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        display: block;
+
+        &:nth-of-type(2n) {
+          background-color: lightgray;
         }
 
-        display: block;
-        border: none;
-        padding: 1rem;
-        text-align: right;
+        &:nth-of-type(2n+1) {
+          background-color: white;
+        }
 
       }
-    }
 
-    @include screen-size('md') {
-      display: block;
+      .mat-cell {
+        border: none;
+
+        @include screen-size('md') {
+          &:before {
+            content: attr(data-label);
+            float: left;
+            text-transform: capitalize;
+            font-size: .85em;
+          }
+
+          display: block;
+          border: none;
+          padding: 1rem;
+          text-align: right;
+        }
+      }
+
+      @include screen-size('md') {
+        display: block;
+      }
     }
   }
 
-
-}
-
-.loading {
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
+  .loading {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
 }
