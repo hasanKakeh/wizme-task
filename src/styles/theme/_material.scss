@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+@use '../abstracts' as *;
+@include mat.core();
+
+$wizme-primary: mat.define-palette($primary-palette, 400);
+$wizme-accent: mat.define-palette($accent-palette, 400, A100, A400);
+$wizme-warn: mat.define-palette($warn-palette, 400);
+
+$wizme-theme: mat.define-light-theme((color: (primary: $wizme-primary,
+        accent: $wizme-accent,
+        warn: $wizme-warn,
+      )));
+
+@include mat.all-component-themes($wizme-theme);

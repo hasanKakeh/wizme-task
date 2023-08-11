@@ -1,0 +1,74 @@
+// primary Colors
+$white: #fff;
+$black: #000;
+// Colors
+$primary-color: #1d3557;
+$accent-color: #457b9d;
+$warn-color: #e63946;
+// Main Palette
+$contrast-palette:(
+    50: $black,
+    100:$black,
+    200: $black,
+    300: $black,
+    400: $white,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+    A100: $black,
+    A200: $white,
+    A400: $white,
+    A700: $white,
+  );
+  $primary-palette: (
+  50: scale-color($primary-color, $lightness: 80%),
+  100: scale-color($primary-color, $lightness: 60%),
+  200: scale-color($primary-color, $lightness: 40%),
+  300: scale-color($primary-color, $lightness: 20%),
+  400: $primary-color,
+  500: scale-color($primary-color, $lightness: -20%),
+  600: scale-color($primary-color, $lightness: -40%),
+  700: scale-color($primary-color, $lightness: -60%),
+  800: scale-color($primary-color, $lightness: -80%),
+  A100: scale-color($primary-color, $lightness: 90%),
+  A200: scale-color($primary-color, $lightness: 70%),
+  A400: scale-color($primary-color, $lightness: 50%),
+  A700: scale-color($primary-color, $lightness: 30%),
+  contrast:$contrast-palette
+);
+$warn-palette: (
+  50: scale-color($warn-color, $lightness: 80%),
+  100: scale-color($warn-color, $lightness: 60%),
+  200: scale-color($warn-color, $lightness: 40%),
+  300: scale-color($warn-color, $lightness: 20%),
+  400: $warn-color,
+  500: scale-color($warn-color, $lightness: -20%),
+  600: scale-color($warn-color, $lightness: -40%),
+  700: scale-color($warn-color, $lightness: -60%),
+  800: scale-color($warn-color, $lightness: -80%),
+  A100: scale-color($warn-color, $lightness: 90%),
+  A200: scale-color($warn-color, $lightness: 70%),
+  A400: scale-color($warn-color, $lightness: 50%),
+  A700: scale-color($warn-color, $lightness: 30%),
+  contrast: $contrast-palette
+);
+$accent-palette: (
+  50: scale-color($accent-color, $lightness: 80%),
+  100: scale-color($accent-color, $lightness: 60%),
+  200: scale-color($accent-color, $lightness: 40%),
+  300: scale-color($accent-color, $lightness: 20%),
+  400: $accent-color,
+  500: scale-color($accent-color, $lightness: -20%),
+  600: scale-color($accent-color, $lightness: -40%),
+  700: scale-color($accent-color, $lightness: -60%),
+  800: scale-color($accent-color, $lightness: -80%),
+  A100: scale-color($accent-color, $lightness: 90%),
+  A200: scale-color($accent-color, $lightness: 70%),
+  A400: scale-color($accent-color, $lightness: 50%),
+  A700: scale-color($accent-color, $lightness: 30%),
+  contrast: $contrast-palette
+);
+
+

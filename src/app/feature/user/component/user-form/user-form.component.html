@@ -1,0 +1,19 @@
+<form [formGroup]="userForm" class="user-form" (ngSubmit)="onSubmit()">
+
+  <input-field label="First Name" placeholder="First Name" controlName="firstName"
+    [errorMessages]="validationMessages"></input-field>
+
+  <input-field label="Last Name" placeholder="Last Name" controlName="lastName"
+    [errorMessages]="validationMessages"></input-field>
+
+  <input-date-field label="BirthDate" placeholder="MM/DD/YYYY" controlName="birthdate"
+    [errorMessages]="validationMessages"></input-date-field>
+
+
+  <div class="user-form__slider">
+    <mat-slide-toggle formControlName="isActive">Is Active</mat-slide-toggle>
+  </div>
+  <div class="user-form__action">
+    <button type="submit" mat-raised-button color="primary">{{(userId$ |async) ?'Edit':"Add"}}</button>
+  </div>
+</form>

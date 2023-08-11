@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>{{label}}</mat-label>
+  <input matInput [formControl]="formControl" [matDatepicker]="picker">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-error>{{errorMessages[controlName] |validation:formControl.errors}}</mat-error>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
