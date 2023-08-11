@@ -1,3 +1,5 @@
+import { UsersEffects, userReducer } from '@core/store';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +19,8 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot(),
+    StoreModule.forRoot({'users':userReducer}),
+    EffectsModule.forRoot([UsersEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

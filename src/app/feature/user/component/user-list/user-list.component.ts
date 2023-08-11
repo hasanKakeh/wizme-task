@@ -26,7 +26,6 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.titleService.setTitle('user list')
     this.isLoading$ = this.store.pipe(select(usersIsLoadingSelector))
-    this.getAllUser()
     this.subscribeUserStore()
   }
 
@@ -34,14 +33,16 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dataSource.paginator = this.paginator;
   }
 
-  getAllUser() {
-    this.store.dispatch(UserAction.getAllUsers())
-  }
   subscribeUserStore() {
     this.store.pipe(takeUntil(this.destroy$), select(usersSelector))
       .subscribe(users => {
         this.dataSource.data = users
+        if (!users.length) this.getAllUser()
       })
+  }
+
+  getAllUser() {
+    this.store.dispatch(UserAction.getAllUsers())
   }
 
   deleteUser(id: number) {

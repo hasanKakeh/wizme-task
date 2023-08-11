@@ -74,7 +74,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
       firstName: new FormControl(null, [Validators.required, Validators.minLength(4)]),
       lastName: new FormControl(null, [Validators.required, Validators.minLength(4)]),
       birthdate: new FormControl(null, [Validators.required]),
-      isActive: new FormControl(),
+      isActive: new FormControl(false),
     })
   }
   onSubmit() {

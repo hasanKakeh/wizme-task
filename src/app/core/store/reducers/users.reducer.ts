@@ -12,5 +12,6 @@ export const userReducer = createReducer(initialUsersState,
   on(UserAction.getAllUsers, (state) => ({ ...state, isLoading: true })),
   on(UserAction.getUsersSuccess, (state, { users }) => ({ ...state, users, isLoading: false })),
   on(UserAction.deleteUserSuccess, (state, { id }) => ({ ...state, users: state.users.filter(user => user.id != id) })),
-  on(UserAction.getUserByIdSuccess, (state, { user }) => ({ ...state, selectedUser: user }))
+  on(UserAction.getUserByIdSuccess, (state, { user }) => ({ ...state, selectedUser: user })),
+  on(UserAction.updateUserSuccess, (state, { user }) => ({ ...state, users: state.users.map(_user => _user.id == user.id ? user : _user) }))
 );
